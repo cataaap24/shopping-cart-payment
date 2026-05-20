@@ -1,0 +1,34 @@
+<mxfile host="Electron">
+  <diagram name="Página-1" id="4Sz1mAPVoK_VxjDgZgGL">
+    <mxGraphModel dx="1030" dy="626" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2IW_2r9S7vl9Rc-JVUse-1" parent="1" style="shape=umlBoundary;whiteSpace=wrap;html=1;" value="PantallaCarrito" vertex="1">
+          <mxGeometry height="80" width="100" x="80" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="2IW_2r9S7vl9Rc-JVUse-2" parent="1" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" value="ControlConfirmarCompra" vertex="1">
+          <mxGeometry height="90" width="160" x="260" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="2IW_2r9S7vl9Rc-JVUse-3" parent="1" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" value="ControlPago" vertex="1">
+          <mxGeometry height="80" width="81" x="480" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="2IW_2r9S7vl9Rc-JVUse-4" parent="1" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" value="Carrito" vertex="1">
+          <mxGeometry height="80" width="80" x="650" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="2IW_2r9S7vl9Rc-JVUse-5" parent="1" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" value="ItemCarrito" vertex="1">
+          <mxGeometry height="80" width="80" x="650" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="2IW_2r9S7vl9Rc-JVUse-6" parent="1" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" value="Producto" vertex="1">
+          <mxGeometry height="80" width="80" x="650" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="2IW_2r9S7vl9Rc-JVUse-7" parent="1" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" value="Cliente" vertex="1">
+          <mxGeometry height="80" width="80" x="650" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="2IW_2r9S7vl9Rc-JVUse-8" parent="1" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" value="Compra" vertex="1">
+          <mxGeometry height="80" width="80" x="650" y="560" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

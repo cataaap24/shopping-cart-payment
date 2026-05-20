@@ -1,0 +1,28 @@
+<mxfile host="Electron">
+  <diagram name="Página-1" id="OQ9vdfIwwZZuUwndpQdN">
+    <mxGraphModel dx="1030" dy="626" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3VtLK5KaoxGHvLpNtUhp-8" edge="1" parent="1" source="3VtLK5KaoxGHvLpNtUhp-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="3VtLK5KaoxGHvLpNtUhp-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3VtLK5KaoxGHvLpNtUhp-1" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Cliente" vertex="1">
+          <mxGeometry height="60" width="30" x="100" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="3VtLK5KaoxGHvLpNtUhp-2" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="Shooping Cart App" vertex="1">
+          <mxGeometry height="290" width="630" x="220" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="3VtLK5KaoxGHvLpNtUhp-9" edge="1" parent="3VtLK5KaoxGHvLpNtUhp-2" source="3VtLK5KaoxGHvLpNtUhp-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;" target="3VtLK5KaoxGHvLpNtUhp-7" value="&amp;lt;&amp;lt;INCLUDE&amp;gt;&amp;gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3VtLK5KaoxGHvLpNtUhp-4" parent="3VtLK5KaoxGHvLpNtUhp-2" style="ellipse;whiteSpace=wrap;html=1;" value="ConfirmarCompraUseCase" vertex="1">
+          <mxGeometry height="70" width="160" x="60" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="3VtLK5KaoxGHvLpNtUhp-7" parent="3VtLK5KaoxGHvLpNtUhp-2" style="ellipse;whiteSpace=wrap;html=1;" value="GestionarPago" vertex="1">
+          <mxGeometry height="70" width="160" x="410" y="110" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
