@@ -80,5 +80,17 @@ public class Cart {
             }
         }
     }
+
+    public boolean esAptoParaPago() {
+        if (items.isEmpty()) {
+            return false;
+        }
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getQuantity() <= 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
