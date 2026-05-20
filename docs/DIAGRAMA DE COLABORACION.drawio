@@ -1,32 +1,58 @@
-<mxfile host="Electron">
+<mxfile host="app.diagrams.net">
   <diagram name="Página-1" id="4Sz1mAPVoK_VxjDgZgGL">
-    <mxGraphModel dx="1030" dy="626" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1956" dy="1129" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="2IW_2r9S7vl9Rc-JVUse-1" parent="1" style="shape=umlBoundary;whiteSpace=wrap;html=1;" value="PantallaCarrito" vertex="1">
-          <mxGeometry height="80" width="100" x="80" y="270" as="geometry" />
+          <mxGeometry height="80" width="100" x="270" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="4EOAraQWwk0Z3dzcEwW7-6" edge="1" parent="1" source="2IW_2r9S7vl9Rc-JVUse-2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.995;exitY=0.504;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" target="2IW_2r9S7vl9Rc-JVUse-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="950" y="140" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="2IW_2r9S7vl9Rc-JVUse-2" parent="1" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" value="ControlConfirmarCompra" vertex="1">
-          <mxGeometry height="90" width="160" x="260" y="260" as="geometry" />
-        </mxCell>
-        <mxCell id="2IW_2r9S7vl9Rc-JVUse-3" parent="1" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" value="ControlPago" vertex="1">
-          <mxGeometry height="80" width="81" x="480" y="265" as="geometry" />
+          <mxGeometry height="90" width="160" x="560" y="260" as="geometry" />
         </mxCell>
         <mxCell id="2IW_2r9S7vl9Rc-JVUse-4" parent="1" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" value="Carrito" vertex="1">
-          <mxGeometry height="80" width="80" x="650" y="120" as="geometry" />
+          <mxGeometry height="80" width="80" x="900" y="100" as="geometry" />
         </mxCell>
         <mxCell id="2IW_2r9S7vl9Rc-JVUse-5" parent="1" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" value="ItemCarrito" vertex="1">
-          <mxGeometry height="80" width="80" x="650" y="230" as="geometry" />
+          <mxGeometry height="80" width="80" x="1101" y="210" as="geometry" />
         </mxCell>
         <mxCell id="2IW_2r9S7vl9Rc-JVUse-6" parent="1" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" value="Producto" vertex="1">
-          <mxGeometry height="80" width="80" x="650" y="340" as="geometry" />
+          <mxGeometry height="80" width="80" x="1101" y="320" as="geometry" />
         </mxCell>
         <mxCell id="2IW_2r9S7vl9Rc-JVUse-7" parent="1" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" value="Cliente" vertex="1">
-          <mxGeometry height="80" width="80" x="650" y="450" as="geometry" />
+          <mxGeometry height="80" width="80" x="1101" y="430" as="geometry" />
         </mxCell>
         <mxCell id="2IW_2r9S7vl9Rc-JVUse-8" parent="1" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" value="Compra" vertex="1">
-          <mxGeometry height="80" width="80" x="650" y="560" as="geometry" />
+          <mxGeometry height="80" width="80" x="1101" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="4EOAraQWwk0Z3dzcEwW7-1" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Cliente" vertex="1">
+          <mxGeometry height="60" width="30" x="80" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="4EOAraQWwk0Z3dzcEwW7-2" edge="1" parent="1" source="4EOAraQWwk0Z3dzcEwW7-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" target="2IW_2r9S7vl9Rc-JVUse-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4EOAraQWwk0Z3dzcEwW7-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="1. El actor Cliente envía un mensaje de acción a PantallaCarrito." vertex="1">
+          <mxGeometry height="30" width="160" x="110" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="4EOAraQWwk0Z3dzcEwW7-4" edge="1" parent="1" source="2IW_2r9S7vl9Rc-JVUse-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.557;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" target="2IW_2r9S7vl9Rc-JVUse-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4EOAraQWwk0Z3dzcEwW7-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="2. Delega el evento enviando un mensaje a ControlConfirmarCompra." vertex="1">
+          <mxGeometry height="30" width="170" x="380" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="4EOAraQWwk0Z3dzcEwW7-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="3. invoca la validación enviando un mensaje directo a la entidad Carrito" vertex="1">
+          <mxGeometry height="30" width="160" x="667" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="4EOAraQWwk0Z3dzcEwW7-8" parent="1" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" value="ControlPago" vertex="1">
+          <mxGeometry height="90" width="90" x="800" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="4EOAraQWwk0Z3dzcEwW7-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="4. Si es apto, procede a calcular el valor total." vertex="1">
+          <mxGeometry height="10" width="130" x="810" y="270" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

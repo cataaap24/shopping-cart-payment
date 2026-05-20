@@ -32,8 +32,8 @@ public class ConfirmarCompraUseCase {
     public OperationResult execute() {
         Cart cart = cartRepository.getCart();
 
-        if (cart == null || cart.getItems().isEmpty()) {
-            return OperationResult.fail("El carrito está vacío.");
+        if (cart == null || !cart.esAptoParaPago()) {
+            return OperationResult.fail("El carrito no es apto para iniciar el pago.");
         }
 
         Customer customer = customerRepository.getCustomer();
@@ -63,7 +63,6 @@ public class ConfirmarCompraUseCase {
             product.decreaseAvailableQuantity(item.getQuantity());
             purchase.addItem(new PurchaseItem(product, item.getQuantity(), product.getPrice()));
             productRepository.save(product);
-
         }
 
         purchaseRepository.save(purchase);
