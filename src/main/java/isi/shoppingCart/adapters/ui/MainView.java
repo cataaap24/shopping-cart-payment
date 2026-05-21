@@ -78,7 +78,7 @@ public class MainView {
         Button confirmButton = new Button("Confirmar compra");
         confirmButton.setOnAction(event -> {
             OperationResult result = shoppingCartApp.confirmPurchase();
-            showMessage(result.getMessage());
+            showPaymentResult(result);
             refreshCatalog();
             refreshCart();
             refreshPurchases();
@@ -215,6 +215,32 @@ public class MainView {
             purchaseLabel.setStyle("-fx-padding: 5; -fx-border-color: #DDDDDD;");
             purchaseBox.getChildren().add(purchaseLabel);
         }
+    }
+
+    private void showPaymentResult(OperationResult result) {
+        if (result.isSuccess()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Pago aprobado");
+            alert.setHeaderText("Compra confirmada");
+            alert.setContentText(result.getMessage());
+            alert.showAndWait();
+            return;
+        }
+        
+        if (result.getMessage() != null && result.getMessage().toLowerCase().contains("rechazado")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Pago rechazado");
+            alert.setHeaderText("El pago no pudo completarse");
+            alert.setContentText(result.getMessage());
+            alert.showAndWait();
+            return;
+        }
+         // Otro error
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("No se pudo confirmar la compra");
+        alert.setContentText(result.getMessage());
+        alert.showAndWait();
     }
 
     private void showMessage(String message) {
