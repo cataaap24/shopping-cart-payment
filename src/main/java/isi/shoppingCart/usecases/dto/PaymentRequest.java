@@ -2,15 +2,15 @@ package isi.shoppingCart.usecases.dto;
 
 public class PaymentRequest {
 
-    private final String clientId;
+    private final int clientId;
     private final double totalAmount;
 
-    public PaymentRequest(String clientId, double totalAmount) {
+    public PaymentRequest(int clientId, double totalAmount) {
         this.clientId = clientId;
         this.totalAmount = totalAmount;
     }
 
-    public String getClientId() {
+    public int getClientId() {
         return clientId;
     }
 
