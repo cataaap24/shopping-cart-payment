@@ -1,11 +1,6 @@
 package isi.shoppingCart.usecases.services;
 
-import isi.shoppingCart.entities.Cart;
-import isi.shoppingCart.entities.CartItem;
-import isi.shoppingCart.entities.Customer;
-import isi.shoppingCart.entities.Product;
-import isi.shoppingCart.entities.Purchase;
-import isi.shoppingCart.entities.PurchaseItem;
+import isi.shoppingCart.entities.*;
 import isi.shoppingCart.usecases.dto.OperationResult;
 import isi.shoppingCart.usecases.ports.CartRepository;
 import isi.shoppingCart.usecases.ports.CustomerRepository;
@@ -54,7 +49,7 @@ public class ConfirmarCompraUseCase {
             }
         }
 
-        Purchase purchase = new Purchase(purchaseRepository.getNextId(), customer);
+        Purchase purchase = new Purchase(purchaseRepository.getNextId(), customer, null);
 
         for (i = 0; i < items.size(); i++) {
             CartItem item = items.get(i);
@@ -71,8 +66,8 @@ public class ConfirmarCompraUseCase {
         return OperationResult.ok("Compra " + purchase.getId() + " confirmada para " + customer.getName() + ". Total: $ " + purchase.getTotal());
     }
 }
+
 /*
-``` java
 package isi.shoppingCart.usecases.services;
 
 import isi.shoppingCart.entities.Cart;
@@ -85,12 +80,8 @@ import isi.shoppingCart.entities.Payment;
 import isi.shoppingCart.usecases.dto.OperationResult;
 import isi.shoppingCart.usecases.dto.PaymentRequest;
 import isi.shoppingCart.usecases.dto.PaymentResult;
-import isi.shoppingCart.usecases.ports.CartRepository;
-import isi.shoppingCart.usecases.ports.CustomerRepository;
-import isi.shoppingCart.usecases.ports.ProductRepository;
-import isi.shoppingCart.usecases.ports.PurchaseRepository;
-import isi.shoppingCart.usecases.ports.PaymentGateway;
-import isi.shoppingCart.usecases.ports.PaymentRepository;
+import isi.shoppingCart.usecases.ports.*;
+
 
 import java.util.List;
 
@@ -101,13 +92,11 @@ public class ConfirmarCompraUseCase {
     private ProductRepository productRepository;
     private PaymentGateway paymentGateway;
     private PaymentRepository paymentRepository;
-
     public ConfirmarCompraUseCase(CartRepository cartRepository,
                                   CustomerRepository customerRepository,
                                   PurchaseRepository purchaseRepository,
                                   ProductRepository productRepository,
-                                  PaymentGateway paymentGateway,
-                                  PaymentRepository paymentRepository) {
+                                  PaymentGateway paymentGateway,PaymentRepository paymentRepository) {
         this.cartRepository = cartRepository;
         this.customerRepository = customerRepository;
         this.purchaseRepository = purchaseRepository;
@@ -145,8 +134,8 @@ public class ConfirmarCompraUseCase {
         }
 
         // Flujo Normal: Pasos 5 y 6 (Preparación para el pago)
-        double totalAmount = cart.getTotalAmount();
-        String clientId = customer.getId();
+        double totalAmount = cart.getTotal();
+        int clientId = customer.getId();
         PaymentRequest request = new PaymentRequest(clientId, totalAmount); // DTO sin simulatedCredentials
 
         // Flujo Normal: Pasos 7 y 8 (Invocación al puerto PaymentGateway - Implementación de Juan David Navarro Bermudez)
@@ -159,7 +148,8 @@ public class ConfirmarCompraUseCase {
         }
 
         // Flujo Normal: Paso 9 (Instanciar y persistir Payment - Microfuncionalidad de Catalina Pineda Posada)
-        Payment payment = new Payment(result.getReference(), result.getMessage(), result.isApproved(), totalAmount);
+
+        Payment payment = new Payment(paymentRepository.getNextId(), totalAmount, result.isApproved(), result.getReference());
         paymentRepository.save(payment);
 
         // Flujo Normal: Pasos 10 y 11 (Registro de compra, descuento de inventario y vaciado de carrito)
@@ -177,9 +167,13 @@ public class ConfirmarCompraUseCase {
         purchaseRepository.save(purchase);
         cartRepository.save(new Cart());
 
-        return OperationResult.ok("Compra " + purchase.getId() + " confirmada para " + customer.getName() + ". Total: $ " + totalAmount);
+        return OperationResult.ok(
+                "Compra " + purchase.getId()
+                        + " confirmada para " + customer.getName()
+                        + ". Total: $ " + purchase.getTotal()
+                        + ". Referencia de pago: " + payment.getReference()
+        );
     }
 }
 
-```
  */
