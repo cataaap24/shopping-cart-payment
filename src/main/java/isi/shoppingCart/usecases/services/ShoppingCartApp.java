@@ -7,7 +7,7 @@ import isi.shoppingCart.entities.Product;
 import isi.shoppingCart.entities.Purchase;
 import isi.shoppingCart.infrastructure.repositories.InMemoryCartRepository;
 import isi.shoppingCart.infrastructure.repositories.InMemoryCustomerRepository;
-import isi.shoppingCart.infrastructure.repositories.InMemoryFakePaymentGateway; // ← NUEVO
+import isi.shoppingCart.infrastructure.repositories.InMemoryFakePaymentGateway;
 import isi.shoppingCart.infrastructure.repositories.InMemoryPaymentRepository;
 import isi.shoppingCart.infrastructure.repositories.InMemoryProductRepository;
 import isi.shoppingCart.infrastructure.repositories.InMemoryPurchaseRepository;
