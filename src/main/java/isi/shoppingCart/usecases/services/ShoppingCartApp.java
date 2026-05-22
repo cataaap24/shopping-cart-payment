@@ -7,20 +7,28 @@ import isi.shoppingCart.entities.Product;
 import isi.shoppingCart.entities.Purchase;
 import isi.shoppingCart.infrastructure.repositories.InMemoryCartRepository;
 import isi.shoppingCart.infrastructure.repositories.InMemoryCustomerRepository;
+import isi.shoppingCart.infrastructure.repositories.InMemoryFakePaymentGateway; // ← NUEVO
+import isi.shoppingCart.infrastructure.repositories.InMemoryPaymentRepository;
 import isi.shoppingCart.infrastructure.repositories.InMemoryProductRepository;
 import isi.shoppingCart.infrastructure.repositories.InMemoryPurchaseRepository;
 import isi.shoppingCart.usecases.dto.OperationResult;
 import isi.shoppingCart.usecases.ports.CartRepository;
 import isi.shoppingCart.usecases.ports.CustomerRepository;
+import isi.shoppingCart.usecases.ports.PaymentGateway;
+import isi.shoppingCart.usecases.ports.PaymentRepository;
 import isi.shoppingCart.usecases.ports.ProductRepository;
 import isi.shoppingCart.usecases.ports.PurchaseRepository;
+
 import java.util.List;
 
 public class ShoppingCartApp {
+
     private ProductRepository productRepository;
     private CartRepository cartRepository;
     private CustomerRepository customerRepository;
     private PurchaseRepository purchaseRepository;
+    private PaymentRepository paymentRepository;
+    private PaymentGateway paymentGateway;
     private AgregarProductoAlCarritoUseCase agregarProductoAlCarritoUseCase;
     private ConfirmarCompraUseCase confirmarCompraUseCase;
     private IncreaseAvailableQuantityUseCase increaseAvailableQuantityUseCase;
@@ -33,23 +41,26 @@ public class ShoppingCartApp {
         cartRepository = new InMemoryCartRepository();
         customerRepository = new InMemoryCustomerRepository();
         purchaseRepository = new InMemoryPurchaseRepository();
+        paymentRepository = new InMemoryPaymentRepository();
+        paymentGateway = new InMemoryFakePaymentGateway();
         agregarProductoAlCarritoUseCase = new AgregarProductoAlCarritoUseCase(productRepository, cartRepository);
-        confirmarCompraUseCase = new ConfirmarCompraUseCase(cartRepository, customerRepository, purchaseRepository, productRepository);
-        increaseAvailableQuantityUseCase = new IncreaseAvailableQuantityUseCase(productRepository);
+        confirmarCompraUseCase = new ConfirmarCompraUseCase(cartRepository, customerRepository, purchaseRepository,
+                productRepository, paymentGateway, paymentRepository);
+        increaseAvailableQuantityUseCase  = new IncreaseAvailableQuantityUseCase(productRepository);
         clearCartUseCase = new ClearCartUseCase(cartRepository);
         eliminarProductoDelCarritoUseCase = new EliminarProductoDelCarritoUseCase(cartRepository);
         reducirCantidadDelCarritoUseCase = new ReducirCantidadDelCarritoUseCase(cartRepository);
 
         cargarDatosIniciales();
     }
-
-    public ShoppingCartApp(ProductRepository productRepository,
+    
+    public ShoppingCartApp(ProductRepository  productRepository,
                            CartRepository cartRepository,
                            CustomerRepository customerRepository,
                            PurchaseRepository purchaseRepository,
                            AgregarProductoAlCarritoUseCase agregarProductoAlCarritoUseCase,
                            ConfirmarCompraUseCase confirmarCompraUseCase,
-                           IncreaseAvailableQuantityUseCase increaseAvailabeQuantityUseCase,
+                           IncreaseAvailableQuantityUseCase increaseAvailableQuantityUseCase,
                            ClearCartUseCase clearCartUseCase,
                            EliminarProductoDelCarritoUseCase eliminarProductoDelCarritoUseCase,
                            ReducirCantidadDelCarritoUseCase reducirCantidadDelCarritoUseCase) {
@@ -59,7 +70,7 @@ public class ShoppingCartApp {
         this.purchaseRepository = purchaseRepository;
         this.agregarProductoAlCarritoUseCase = agregarProductoAlCarritoUseCase;
         this.confirmarCompraUseCase = confirmarCompraUseCase;
-        this.increaseAvailableQuantityUseCase = increaseAvailabeQuantityUseCase;
+        this.increaseAvailableQuantityUseCase = increaseAvailableQuantityUseCase;
         this.clearCartUseCase = clearCartUseCase;
         this.eliminarProductoDelCarritoUseCase = eliminarProductoDelCarritoUseCase;
         this.reducirCantidadDelCarritoUseCase = reducirCantidadDelCarritoUseCase;
@@ -91,18 +102,12 @@ public class ShoppingCartApp {
         Product product2 = productRepository.findById(2);
         Product product3 = productRepository.findById(3);
 
-        if (product1 != null) {
-            cart.addProduct(product1);
-        }
-
+        if (product1 != null) cart.addProduct(product1);
         if (product2 != null) {
             cart.addProduct(product2);
             cart.addProduct(product2);
         }
-
-        if (product3 != null) {
-            cart.addProduct(product3);
-        }
+        if (product3 != null) cart.addProduct(product3);
 
         cartRepository.save(cart);
     }
@@ -116,13 +121,11 @@ public class ShoppingCartApp {
     }
 
     public List<CartItem> getCartItems() {
-        Cart cart = cartRepository.getCart();
-        return cart.getItems();
+        return cartRepository.getCart().getItems();
     }
 
     public double getCartTotal() {
-        Cart cart = cartRepository.getCart();
-        return cart.getTotal();
+        return cartRepository.getCart().getTotal();
     }
 
     public List<Purchase> getPurchases() {
