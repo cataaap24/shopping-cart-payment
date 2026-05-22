@@ -8,11 +8,13 @@ public class Purchase {
     private int id;
     private Customer customer;
     private List<PurchaseItem> items;
+    private Payment payment;
 
-    public Purchase(int id, Customer customer) {
+    public Purchase(int id, Customer customer, Payment payment) {
         this.id = id;
         this.customer = customer;
         this.items = new ArrayList<PurchaseItem>();
+        this.payment = payment;
     }
 
     public int getId() {
