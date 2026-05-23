@@ -106,6 +106,7 @@ public class ShoppingCartApp {
         if (product2 != null) {
             cart.addProduct(product2);
             cart.addProduct(product2);
+            cart.addProduct(product2);
         }
         if (product3 != null) cart.addProduct(product3);
 
