@@ -2,10 +2,9 @@ package isi.shoppingCart.usecases.services;
 
 import isi.shoppingCart.entities.*;
 import isi.shoppingCart.usecases.dto.OperationResult;
-import isi.shoppingCart.usecases.ports.CartRepository;
-import isi.shoppingCart.usecases.ports.CustomerRepository;
-import isi.shoppingCart.usecases.ports.ProductRepository;
-import isi.shoppingCart.usecases.ports.PurchaseRepository;
+import isi.shoppingCart.usecases.dto.PaymentRequest;
+import isi.shoppingCart.usecases.dto.PaymentResult;
+import isi.shoppingCart.usecases.ports.*;
 
 import java.util.List;
 
@@ -14,14 +13,19 @@ public class ConfirmarCompraUseCase {
     private CustomerRepository customerRepository;
     private PurchaseRepository purchaseRepository;
     private ProductRepository productRepository;
+    private PaymentRepository paymentRepository;
+    private PaymentGateway paymentGateway;
 
     public ConfirmarCompraUseCase(CartRepository cartRepository,
                                   CustomerRepository customerRepository,
-                                  PurchaseRepository purchaseRepository, ProductRepository productRepository) {
+                                  PurchaseRepository purchaseRepository, ProductRepository productRepository,
+                                  PaymentGateway paymentGateway, PaymentRepository paymentRepository) {
         this.cartRepository = cartRepository;
         this.customerRepository = customerRepository;
         this.purchaseRepository = purchaseRepository;
         this.productRepository = productRepository;
+        this.paymentRepository = paymentRepository;
+        this.paymentGateway = paymentGateway;
     }
 
     public OperationResult execute() {
@@ -49,7 +53,18 @@ public class ConfirmarCompraUseCase {
             }
         }
 
-        Purchase purchase = new Purchase(purchaseRepository.getNextId(), customer, null);
+        //Procesar pago
+        PaymentRequest paymentRequest = new PaymentRequest(customer.getId(), cart.getTotal());
+        PaymentResult result = paymentGateway.processPayment(paymentRequest);
+
+        if (!result.isApproved()) {
+            return OperationResult.fail("El pago no fue aprobado: " + result.getMessage());
+        }
+
+        Payment payment = new Payment(paymentRepository.getNextId(), cart.getTotal(), result.isApproved(), result.getReference());
+        paymentRepository.save(payment);
+
+        Purchase purchase = new Purchase(purchaseRepository.getNextId(), customer, payment);
 
         for (i = 0; i < items.size(); i++) {
             CartItem item = items.get(i);
